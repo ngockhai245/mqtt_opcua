@@ -64,12 +64,12 @@ input[type=button]:hover {
     width: 100%;
     display: inline-block;
     border: 1px solid black;
-    /* max-height: 250px; */
-    min-height: 250px;
+    max-height: 200px;
+    min-height: 200px;
     overflow: scroll;
 }
 
 #messages span{
-    overflow-x: scroll;
+    overflow: scroll;
     overflow-y: scroll;
 }
