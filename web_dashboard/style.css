@@ -5,13 +5,13 @@ body{
 .sample{
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    padding-left: 15px;
-    padding-right: 15px; 
+    width: 60%;
+    padding-left: 10px;
+    padding-right: 10px; 
 }
 
 input{
-    width: 150px;
+    width: 100px;
     margin: 0;
     box-sizing: border-box;
     border: 1px solid black;
@@ -20,16 +20,16 @@ input{
 
 input[type=text]{
     width: 100%;
-    padding: 18px 18px;
-    height: 15px;
-    margin: 12px 0px;
+    padding: 12px 12px;
+    height: 10px;
+    margin: 8px 0px;
 }
 
 input[type=password]{
     width: 100%;
-    padding: 18px 18px;
-    height: 15px;
-    margin: 6px 3px; /*(top bottom) (left right)*/
+    padding: 12px 12px;
+    height: 10px;
+    margin: 4px 2px; /*(top bottom) (left right)*/
 }
 
 input[type=button]{
@@ -38,15 +38,19 @@ input[type=button]{
     color: white;
     text-decoration: none;
     font-weight: bold;
-    height: 30px;
-    margin: 6px 3px;
+    height: 20px;
+    margin: 4px 2px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 input[type=text]:focus {
-    background-color: lightblue;
+    background-color: #a4eca7;
+}
+
+input[type=password]:focus {
+    background-color: #a4eca7;
 }
 
 input[type=button]:hover {
@@ -58,9 +62,9 @@ input[type=button]:hover {
 }
 
 #messages{
-    margin-top: 18px;
-    margin-bottom: 18px;
-    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 8px;
     width: 100%;
     display: inline-block;
     border: 1px solid black;
