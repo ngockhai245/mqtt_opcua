@@ -5,9 +5,9 @@ import time
 broker = 'localhost'
 port = 1883
 
-topics = ['home/humidity', 'home/temperature']
+topics = ['home/temperature', 'home/humidity']
 
-topics_count = 0
+# topics_count = 0
 
 #kiem tra ket noi voi broker
 def on_connect(client, userdata, flags, rc):#rc: reason_code
@@ -28,11 +28,11 @@ def on_message(client, userdata, msg):
     #in 
     print(f"Received '{message}' from topic '{msg.topic}'")
 
-    topics_count += 1
+    # topics_count += 1
 
-    if topics_count == len(topics):
-        print("-------------------------------")
-        topics_count = 0
+    # if topics_count == len(topics):
+    #     print("-------------------------------")
+    #     topics_count = 0
 
 
 

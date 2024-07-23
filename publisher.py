@@ -33,21 +33,8 @@ client.loop_start()
 try:
     while True:
 
-        #HUMIDITY
-        random_humidity_data = random.uniform(0, 100)
-        humidity_result = client.publish(humidity_topic, random_humidity_data)
-
-        #kiem tra neu publish data thanh cong
-        humidity_status = humidity_result[0]
-        if humidity_status == 0:
-            print(f"Send '{random_humidity_data}' to topic '{humidity_topic}'")
-        else:
-            print("Failed!")
-
-
-
         #TEMPERATURE
-        random_temperature_data = random.uniform(20, 45)
+        random_temperature_data = random.randint(10, 60)
         temperature_result = client.publish(temperature_topic, random_temperature_data)
 
         #kiem tra neu publish data thanh cong
@@ -59,7 +46,20 @@ try:
 
 
 
-        print("-------------------------------")
+        #HUMIDITY
+        random_humidity_data = random.randint(0, 100)
+        humidity_result = client.publish(humidity_topic, random_humidity_data)
+
+        #kiem tra neu publish data thanh cong
+        humidity_status = humidity_result[0]
+        if humidity_status == 0:
+            print(f"Send '{random_humidity_data}' to topic '{humidity_topic}'")
+        else:
+            print("Failed!")
+
+
+
+        # print("-------------------------------")
         #gui sau bao nhieu giay
         time.sleep(10)
 
