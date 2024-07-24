@@ -17,7 +17,7 @@ window.addEventListener("load", (event) => {
 function connectToBroker() {
     const clientId = "client" + Math.random().toString(36).substring(7);
 
-    // Change this to point to your MQTT broker
+    // MQTT broker web sockets, port 9001 as listener was declared in file "mosquitto.conf"
     const host = "ws://localhost:9001";
 
     const options = {
@@ -51,7 +51,8 @@ function connectToBroker() {
             "Received Message: " + message.toString() + "\nOn topic: " + topic
         );
         const messageTextArea = document.querySelector("#message");
-        messageTextArea.value += message + "\r\n";
+        // messageTextArea.value += message + "\r\n"; //create a scroll list of data published
+        messageTextArea.value = message; //print newest data only in message box
     });
 }
 

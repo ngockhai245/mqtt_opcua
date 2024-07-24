@@ -9,11 +9,11 @@ topics = ['home/temperature', 'home/humidity']
 
 # topics_count = 0
 
-#kiem tra ket noi voi broker
+#check connect to broker
 def on_connect(client, userdata, flags, rc):#rc: reason_code
     if rc == 0:
         print("Connect to broker")
-        #subscribe topics
+        #subscribe all topics
         for topic in topics:
             client.subscribe(topic)
     else:
@@ -23,9 +23,9 @@ def on_connect(client, userdata, flags, rc):#rc: reason_code
 def on_message(client, userdata, msg):
     global topics_count
 
-    #giai ma noi dung tin nhan
+    #decode message
     message = msg.payload.decode()
-    #in 
+
     print(f"Received '{message}' from topic '{msg.topic}'")
 
     # topics_count += 1
