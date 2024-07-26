@@ -3,13 +3,13 @@ let mqttClient;
 window.addEventListener("load", (event) => {
     connectToBroker();
 
-    const subscribeBtn = document.querySelector("#subscribe");
-    subscribeBtn.addEventListener("click", function () {
+    const subscribeButton = document.querySelector("#subscribe");
+    subscribeButton.addEventListener("click", function () {
         subscribeToTopic();
     });
 
-    const unsubscribeBtn = document.querySelector("#unsubscribe");
-    unsubscribeBtn.addEventListener("click", function () {
+    const unsubscribeButton = document.querySelector("#unsubscribe");
+    unsubscribeButton.addEventListener("click", function () {
         unsubscribeToTopic();
     });
 });
@@ -20,6 +20,7 @@ function connectToBroker() {
     // MQTT broker web sockets, port 9001 as listener was declared in file "mosquitto.conf"
     const host = "ws://localhost:9001";
 
+    // streamBuilder, options: https://github.com/mqttjs/MQTT.js#mqttclientstreambuilder-options
     const options = {
         keepalive: 60,
         clientId: clientId,
@@ -45,7 +46,8 @@ function connectToBroker() {
         console.log("Client connected:" + clientId);
     });
 
-    // Received
+    // Received MQTT message
+    // listener to the "message event", this event gets called when received MQTT message from broker 
     mqttClient.on("message", (topic, message, packet) => {
         console.log(
             "Received Message: " + message.toString() + "\nOn topic: " + topic
@@ -62,7 +64,7 @@ function subscribeToTopic() {
     console.log(`Subscribing to Topic: ${topic}`);
 
     mqttClient.subscribe(topic, { qos: 0 });
-    status.style.color = "green";
+    
     status.value = "SUBSCRIBED";
 }
 
@@ -72,6 +74,6 @@ function unsubscribeToTopic() {
     console.log(`Unsubscribing to Topic: ${topic}`);
 
     mqttClient.unsubscribe(topic, { qos: 0 });
-    status.style.color = "red";
+    
     status.value = "UNSUBSCRIBED";
 }

@@ -3,8 +3,8 @@ let mqttClient;
 window.addEventListener("load", (event) => {
     connectToBroker();
 
-    const publishBtn = document.querySelector(".publish");
-    publishBtn.addEventListener("click", function () {
+    const publishButton = document.querySelector(".publish");
+    publishButton.addEventListener("click", function () {
         publishMessage();
     });
 });
