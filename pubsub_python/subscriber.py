@@ -28,14 +28,7 @@ def on_message(client, userdata, msg):
 
     print(f"Received '{message}' from topic '{msg.topic}'")
 
-    # topics_count += 1
-
-    # if topics_count == len(topics):
-    #     print("-------------------------------")
-    #     topics_count = 0
-
-
-
+#create client instance
 client = mqtt.Client()
 
 client.on_connect = on_connect

@@ -15,7 +15,7 @@ window.addEventListener("load", (event) => {
 });
 
 function connectToBroker() {
-    const clientId = "client" + Math.random().toString(36).substring(7);
+    const clientId = "client-" + Math.random().toString(36).substring(7);
 
     // MQTT broker web sockets, port 9001 as listener was declared in file "mosquitto.conf"
     const host = "ws://localhost:9001";
@@ -49,9 +49,7 @@ function connectToBroker() {
     // Received MQTT message
     // listener to the "message event", this event gets called when received MQTT message from broker 
     mqttClient.on("message", (topic, message, packet) => {
-        console.log(
-            "Received Message: " + message.toString() + "\nOn topic: " + topic
-        );
+        console.log("Received message: " + message.toString() + " from topic: " + topic);
         const messageTextArea = document.querySelector("#message");
         // messageTextArea.value += message + "\r\n"; //create a scroll list of data published
         messageTextArea.value = message; //print newest data only in message box

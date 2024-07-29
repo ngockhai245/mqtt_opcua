@@ -6,14 +6,20 @@
 
 html {
     font-family: Arial, Helvetica, sans-serif;
+    color: rgb(77, 20, 151);
+}
+
+h1, h2 {
+    text-align: center;
+    color: rgb(77, 20, 151);
 }
 
 .line {
-    border: 3px solid red;
-    width: 200px;
+    border: 3px solid rgb(77, 20, 151);
+    width: 100%;
 }
 
-/****** Styling for the Layout ***********/
+/* layout */
 .wrapper {
     background-color: rgb(247, 244, 244);
     list-style-type: none;
@@ -34,12 +40,14 @@ html {
     font-weight: bold;
 }
 
-.form-row>input {
+.form-row>input,
+.form-row>textarea {
     flex: 2;
 }
 
 .form-row>input,
-.form-row>button {
+.form-row>button,
+.form-row>textarea {
     padding: 1em;
     margin: 10px 0;
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
@@ -47,10 +55,21 @@ html {
     font-size: 1.2em;
 }
 
+.form-row>textarea {
+    font-size: 1.5em;
+    background-color: rgb(242, 248, 248);
+    text-align: center;
+    font-weight: bold;
+}
+
 .form-row>button {
-    background-color: #3f51b5;
-    color: white;
-    border: 0;
+    border: 2px solid rgb(77, 20, 151);
+    color: rgb(77, 20, 151);
     flex: 3;
     font-weight: 600;
+}
+
+button:hover {
+    background-color: rgb(77, 20, 151);
+    color: white;
 }
