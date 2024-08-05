@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Device Control</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var socket = io();
+
+            socket.on('sensor_data', function (data) {
+                document.getElementById('temperature').innerHTML = 'Temperature: ' + data.temperature + '°C';
+                document.getElementById('humidity').innerHTML = 'Humidity: ' + data.humidity + '%';
+                document.getElementById('light').innerHTML = 'Light: ' + data.light + ' lux';
+                document.getElementById('motion').innerHTML = 'Motion: ' + data.motion;
+            });
+        });
+    </script> -->
+    <script>
+        async function fetchSensorData() {
+            const response = await fetch('/sensor-data');
+            const data = await response.json();
+            document.getElementById('temperature').innerText = 'Temperature: ' + data.temperature + '°C';
+            document.getElementById('humidity').innerText = 'Humidity: ' + data.humidity + '%';
+            document.getElementById('light').innerText = 'Light: ' + data.light + ' lux';
+            document.getElementById('motion').innerText = 'Motion: ' + (data.motion ? 'Yes' : 'No');
+        }
+
+        setInterval(fetchSensorData, 1000);  // Cập nhật mỗi giây
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            var socket = io();
+
+            function controlDevice(board_id, device_id, state) {
+                socket.emit('control_device', { board_id: board_id, device_id: device_id, state: state });
+            }
+
+            document.getElementById('board1_device1_on').addEventListener('click', () => controlDevice(1, 1, 'on'));
+            document.getElementById('board1_device1_off').addEventListener('click', () => controlDevice(1, 1, 'off'));
+            document.getElementById('board1_device2_on').addEventListener('click', () => controlDevice(1, 2, 'on'));
+            document.getElementById('board1_device2_off').addEventListener('click', () => controlDevice(1, 2, 'off'));
+            document.getElementById('board1_device3_on').addEventListener('click', () => controlDevice(1, 3, 'on'));
+            document.getElementById('board1_device3_off').addEventListener('click', () => controlDevice(1, 3, 'off'));
+            document.getElementById('board2_device4_on').addEventListener('click', () => controlDevice(2, 4, 'on'));
+            document.getElementById('board2_device4_off').addEventListener('click', () => controlDevice(2, 4, 'off'));
+            document.getElementById('board2_device5_on').addEventListener('click', () => controlDevice(2, 5, 'on'));
+            document.getElementById('board2_device5_off').addEventListener('click', () => controlDevice(2, 5, 'off'));
+            document.getElementById('board2_device6_on').addEventListener('click', () => controlDevice(2, 6, 'on'));
+            document.getElementById('board2_device6_off').addEventListener('click', () => controlDevice(2, 6, 'off'));
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Sensor Data</h1>
+    <p id="temperature">Temperature: --</p>
+    <p id="humidity">Humidity: --</p>
+    <p id="light">Light: --</p>
+    <p id="motion">Motion: --</p>
+
+    <h1>Device Control</h1>
+    <h2>Board 1</h2>
+    <button id="board1_device1_on">Device 1 ON</button>
+    <button id="board1_device1_off">Device 1 OFF</button>
+    <button id="board1_device2_on">Device 2 ON</button>
+    <button id="board1_device2_off">Device 2 OFF</button>
+    <button id="board1_device3_on">Device 3 ON</button>
+    <button id="board1_device3_off">Device 3 OFF</button>
+    <h2>Board 2</h2>
+    <button id="board2_device4_on">Device 4 ON</button>
+    <button id="board2_device4_off">Device 4 OFF</button>
+    <button id="board2_device5_on">Device 5 ON</button>
+    <button id="board2_device5_off">Device 5 OFF</button>
+    <button id="board2_device6_on">Device 6 ON</button>
+    <button id="board2_device6_off">Device 6 OFF</button>
+</body>
+
+</html>

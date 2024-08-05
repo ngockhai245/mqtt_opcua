@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sensor Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', (event) => {
+            var socket = io();
+
+            socket.on('sensor_data', function (data) {
+                document.getElementById('temperature').innerText = 'Temperature: ' + data.temperature + '°C';
+                document.getElementById('humidity').innerText = 'Humidity: ' + data.humidity + '%';
+                document.getElementById('light').innerText = 'Light: ' + data.light + ' lux';
+                document.getElementById('motion').innerText = 'Motion: ' + data.motion;
+            });
+        // });
+    </script>
+</head>
+
+<body>
+    <h1>Sensor Data</h1>
+    <p id="temperature">Temperature: --</p>
+    <p id="humidity">Humidity: --</p>
+    <p id="light">Light: --</p>
+    <p id="motion">Motion: --</p>
+</body>
+
+</html>
